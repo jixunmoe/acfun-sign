@@ -1,0 +1,40 @@
+body {
+	font-family: 'Microsoft JhengHei UI', 'Microsoft YaHei UI', sans-serif;
+}
+
+@media (min-width: 768px) {
+	body .main {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.pull-right {
+		float: right;
+	}
+
+	small.pull-right {
+		padding-top: .6em;
+	}
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 1px solid #aaa;
+	text-align: left;
+	text-indent: 1em;
+}
+
+td {
+	text-indent: 2em;
+}
+
+h1 > small, h2 > small, h3 > small,
+h4 > small, h5 > small, h6 > small {
+	color: #aaa;
+	font-size: 60%;
+}
