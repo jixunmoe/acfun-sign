@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS `ac_sign` (
 	`lastSign` date NOT NULL,
 	`auth_key` int(11) NOT NULL,
 	`auth_sha1` int(11) NOT NULL,
-	`disabled` TINYINT NULL,
+	`disabled` TINYINT NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
