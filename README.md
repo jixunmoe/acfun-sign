@@ -8,6 +8,8 @@ SAE 的话直接上传上去、配置好 config.yaml 即可。
 
 如果是自己的服务器，将 `db-config-sample.php` 做个拷贝到 `db-config.php` 然后照着填写。
 
+然后，导入 `install.sql` 到数据库即可。
+
 ## 配置后台
 Corn 添加 `sign.php` 到每日执行即可。
 
