@@ -15,6 +15,14 @@ body {
 	small.pull-right {
 		padding-top: .6em;
 	}
+
+	th, td {
+		text-indent: 1em;
+	}
+
+	td {
+		text-indent: 2em;
+	}
 }
 
 table {
@@ -26,11 +34,6 @@ table {
 th, td {
 	border: 1px solid #aaa;
 	text-align: left;
-	text-indent: 1em;
-}
-
-td {
-	text-indent: 2em;
 }
 
 h1 > small, h2 > small, h3 > small,
