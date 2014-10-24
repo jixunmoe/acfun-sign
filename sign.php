@@ -36,7 +36,7 @@ while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 	$signStatus = json_decode (trim($r), false);
 
 	if (!$signStatus) {
-		print "无效的请求 [服务器拒绝]";
+		print "无效的请求 [服务器拒绝]\n";
 		continue;
 	}
 
