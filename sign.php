@@ -32,13 +32,11 @@ print ("开始签到 .. \n");
 while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 	printf ("为 %s[%d] 签到: \t", $row['user'], $row['id']);
 
-	// $r = do_sign_acfun ($row);
-	$r = 'nyll';
+	$r = do_sign_acfun ($row);
 	$signStatus = json_decode (trim($r), false);
 
 	if (!$signStatus) {
-		print '无效的请求 [服务器拒绝]';
-		print $r;
+		print "无效的请求 [服务器拒绝]";
 		continue;
 	}
 
