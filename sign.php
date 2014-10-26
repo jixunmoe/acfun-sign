@@ -15,17 +15,13 @@ if (C_CLI_SIGN && php_sapi_name() !== 'cli') {
 
 include 'functions.php';
 
-define ('today', date('Y-m-d'));
-$db_getNotSigned = $db -> prepare ('SELECT * FROM `ac_sign` WHERE `lastSign`<>:today AND `disabled`=0');
-
-$db_getNotSigned -> execute (array (
-	':today' => today
-));
+$db_getNotSigned = $db -> prepare ('SELECT * FROM `ac_sign` WHERE DATE(`lastSign`) <> DATE(NOW()) AND `disabled`=0');
+$db_getNotSigned -> execute ();
 
 if (!C_CLI_SIGN) header ('Content-Type: Text/Plain');
 
-$db_updLastSign = $db -> prepare ('SELECT `ac_sign` SET `lastSign`=:today WHERE `id`=:id');
-$db_disableBad  = $db -> prepare ('SELECT `ac_sign` SET `disabled`=0 WHERE `id`=:id');
+$db_updLastSign = $db -> prepare ('UPDATE `ac_sign` SET `lastSign`=DATE(NOW()) WHERE `id`=:id');
+$db_disableBad  = $db -> prepare ('UPDATE `ac_sign` SET `disabled`=0 WHERE `id`=:id');
 
 print ("开始签到 .. \n");
 
@@ -48,13 +44,11 @@ while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 		print '(成功)';
 
 		$db_updLastSign -> execute (array (
-			':today' => today,
 			':id' => $row['id']
 		));
 	} else if ( isset($signStatus -> status) && $signStatus -> status === 401 ) {
 		print '(Cookie 失效)';
 		$db_disableBad  -> execute (array (
-			':today' => today,
 			':id' => $row['id']
 		));
 	} else {
