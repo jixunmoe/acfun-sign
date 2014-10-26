@@ -25,6 +25,7 @@ try {
 	echo '<h1>数据库连接失败!</h1>';
 	exit ;
 }
-// 时区改成天朝
+
+// 时区改成天朝, 强制使用 utf8 编码
 date_default_timezone_set ('Asia/Shanghai');
-$db -> query ('SET time_zone = "+08:00";');
+$db -> query ('SET time_zone = "+08:00"; SET NAMES utf8;');
