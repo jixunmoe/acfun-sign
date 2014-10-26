@@ -15,7 +15,7 @@ if (C_CLI_SIGN && php_sapi_name() !== 'cli') {
 
 include 'functions.php';
 
-$db_getNotSigned = $db -> prepare ('SELECT * FROM `ac_sign` WHERE DATE(`lastSign`) <> DATE(NOW()) AND `disabled`=0');
+$db_getNotSigned = $db -> prepare ('SELECT * FROM `ac_sign` WHERE `lastSign` <> DATE(NOW()) AND `disabled`=0');
 $db_getNotSigned -> execute ();
 
 if (!C_CLI_SIGN) header ('Content-Type: Text/Plain');
