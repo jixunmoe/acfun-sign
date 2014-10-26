@@ -40,7 +40,9 @@ while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 		continue;
 	}
 
-	printf ("%s(%d)\t", $signStatus -> result, isset($signStatus -> status) ? $signStatus -> status : 0);
+	printf ("%s(%d)\t",
+		isset($signStatus -> result) ? $signStatus -> result : '',
+		isset($signStatus -> status) ? $signStatus -> status : 0);
 
 	if ($signStatus -> success) {
 		print '(成功)';
@@ -61,4 +63,4 @@ while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 
 	print "\n";
 }
-print ("签到完毕!");
+print "签到完毕!\n";

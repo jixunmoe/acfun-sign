@@ -9,7 +9,7 @@ if (defined('SAE_MYSQL_HOST_M')) {
 	define ('C_MYSQL_PASS', SAE_MYSQL_PASS);
 } else {
 	// 其它环境
-	include './db-config.php';
+	include 'db-config.php';
 }
 
 include 'config.php';
