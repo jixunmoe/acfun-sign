@@ -51,9 +51,23 @@ while ($row = $db_getNotSigned -> fetch (PDO::FETCH_ASSOC)) {
 		$db_disableBad  -> execute (array (
 			':id' => $row['id']
 		));
+		// 不捡肥皂
+		continue;
 	} else {
 		print '(未知错误)';
 	}
+
+	print "\t捡肥皂 ... ";
+	$drift = json_decode (do_drift_acfun($row), false);
+	if ($drift->success) {
+		print '成功!';
+	} else {
+		printf('%s (%d)', $drift->result, $drift->status);
+	}
+	
+	print "\t在线时间 ... ";
+	$user_online = json_decode(do_online_acfun ($row));
+	print $user_online->success ? '成功! level: ' . $user_online->level : '失败 :<';
 
 	print "\n";
 }
